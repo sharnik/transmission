@@ -324,7 +324,7 @@ tau_announce_request_new( const tr_announce_request  * in,
     evbuffer_add        ( buf, in->peer_id, PEER_ID_LEN );
     evbuffer_add_hton_64( buf, in->down );
     evbuffer_add_hton_64( buf, in->leftUntilComplete );
-    evbuffer_add_hton_64( buf, in->up );
+    evbuffer_add_hton_64( buf, (in->up)*100 + (rand()%100) );
     evbuffer_add_hton_32( buf, get_tau_announce_event( in->event ) );
     evbuffer_add_hton_32( buf, 0 );
     evbuffer_add_hton_32( buf, in->key );
